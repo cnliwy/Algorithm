@@ -13,7 +13,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         resultTv = (TextView)findViewById(R.id.tv_result);
 //        search2();
-        getFbnumber(9);
+//        getFbnumber(9);
+        printZhishu(20);
     }
 
     public void search2(){
@@ -30,5 +31,25 @@ public class MainActivity extends AppCompatActivity {
         String str = "第" + index + "位的值=" + result;
         System.out.println(str);
         resultTv.setText(str);
+    }
+
+    /**
+     * 质数（prime number）又称素数，有无限个。质数定义为在大于1的自然数中，除了1和它本身以外不再有其他因数，这样的数称为质数。
+     * 输出1-number之间所有的质数
+     * @param number
+     */
+    public void printZhishu(int number){
+        for(int i = 2; i <= number; i++){
+            boolean flag = true;
+            for (int j = 2; j <= i/2; j++){
+                if (i%j==0){
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag){
+                System.out.println(i + "是质数");
+            }
+        }
     }
 }
