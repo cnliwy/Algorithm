@@ -12,7 +12,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         resultTv = (TextView)findViewById(R.id.tv_result);
-        search2();
+//        search2();
+        getFbnumber(9);
     }
 
     public void search2(){
@@ -22,5 +23,12 @@ public class MainActivity extends AppCompatActivity {
 //        int resultIndex = BinarySearchAlgorithm.binarySearch2(arr,findKey,0,arr.length-1);
         int resultIndex = BinarySearchAlgorithm.binarySearch3(arr,findKey,0,arr.length-1);
         System.out.println("要查找的值的位置在：" + resultIndex);
+    }
+
+    public void getFbnumber(int index){
+        int result = FbAlgorithm.calculateFb(index);
+        String str = "第" + index + "位的值=" + result;
+        System.out.println(str);
+        resultTv.setText(str);
     }
 }
