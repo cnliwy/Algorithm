@@ -18,7 +18,7 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 public class MainActivity extends AppCompatActivity {
     TextView resultTv;
     RecyclerView recyclerView;
-    String[] menus = {"二分查找","斐波那契","素数","哈希算法","1","2","3"};
+    String[] menus = {"二分查找","斐波那契","素数","哈希算法","水仙花","2","3"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 3:
                 getHashCode("李威亚");
+                break;
+            case 4:
+                AlgorithmUtils.getShuixianhua();
                 break;
             default:
                 break;
