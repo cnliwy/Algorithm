@@ -229,6 +229,7 @@ public class BinaryTree {
         TreeNode parentNode = null;//父节点
         boolean isLeft = false;//自身相对于父节点是左子节点还是右子节点
         TreeNode current = root;//当前节点
+        // 遍历查出该值所在的节点位置及其父节点
         while (true){
             if (current != null){
                 if (current.val == value){
@@ -246,6 +247,7 @@ public class BinaryTree {
                 break;
             }
         }
+        // 根据查出来的结果开始删除此节点
         if (current == null){
             System.out.println("不存在此节点");
         }else{
@@ -268,6 +270,7 @@ public class BinaryTree {
                     if (!isLeft)parentNode.right = current.right;
                 }else if (current.right != null && current.left != null){
                     TreeNode successor = getSuccessor(current);
+                    System.out.println("继承节点==================>" + successor.val);
                     // 左右均不为空
                     if (isLeft){
                         parentNode.left = successor;

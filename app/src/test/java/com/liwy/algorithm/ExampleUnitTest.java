@@ -32,6 +32,14 @@ public class ExampleUnitTest {
         tree.insert(7);
         tree.insert(9);
         tree.insert(13);
+        tree.insert(35);
+        tree.insert(22);
+        tree.insert(28);
+        tree.insert(29);
+        tree.insert(16);
+        tree.insert(36);
+        tree.insert(19);
+
 
         tree.printTree();//打印二叉树
 
@@ -48,7 +56,7 @@ public class ExampleUnitTest {
 //        TreeNode node3 = tree.findKey(3);
 //        node3.left.display();
 //        node3.right.display();
-        tree.deleteValue(5);
+        tree.deleteValue(10);
         tree.printTree();
     }
 }
