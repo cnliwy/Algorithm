@@ -1,8 +1,11 @@
 apply plugin: 'com.android.application'
-
+//打包时间
+def releaseTime() {
+    return new Date().format("yyyyMMddHHmm")
+}
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.liwy.algorithm"
         minSdkVersion 14
@@ -16,19 +19,35 @@ android {
     }
     buildTypes {
         release {
+            minifyEnabled false   //是否代码混淆
+            buildConfigField("boolean", "IS_RELEASE", "true")
+
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "algorithm_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${releaseTime()}.apk"
+                }
+            }
+        }
+        debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
+            buildConfigField("boolean", "IS_RELEASE", "false")
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "algorithm_v${defaultConfig.versionName}_${defaultConfig.versionCode}_${releaseTime()}.apk"
+                }
+            }
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support:recyclerview-v7:25.3.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
 }
